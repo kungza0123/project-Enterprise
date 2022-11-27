@@ -1,0 +1,2 @@
+-- INSERT INTO TUTORIALS (ID, TITLE, DESCRIPTION, PUBLISHED) VALUES (1, 'Software Engineering','dfsdfs', true);
+INSERT INTO USERS (USER_ID, USERNAME, PASSWORD) VALUES (1, 'user', 'user');
