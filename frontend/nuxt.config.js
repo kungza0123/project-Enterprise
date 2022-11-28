@@ -7,7 +7,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     // titleTemplate: '%s ',
-    title: 'HOME',
+    title: 'Company List',
     htmlAttrs: {
       lang: 'en'
     },
@@ -48,14 +48,24 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:8081/',
+    proxy: true,
+  },
+  proxy:{
+    '/api':{
+      target: 'http://localhost:8081/',
+      changeOrigin: true,
+      pathRewrite:{
+        '^/api':'/'
+      }
+    }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
+      dark: false,
       themes: {
         dark: {
           primary: colors.blue.darken2,

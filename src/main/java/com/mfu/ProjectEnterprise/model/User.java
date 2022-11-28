@@ -21,6 +21,11 @@ public class User {
 	@Column(name="PASSWORD")
 	private String password;
 
+	// @JsonIgnore
+	// @OneToMany(mappedBy = "user")
+	// private Set<User> booking;
+
+	public User() {}
 
 	public User(Long id, String username, String password) {
 		this.id = id;

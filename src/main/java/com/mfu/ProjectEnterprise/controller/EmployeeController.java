@@ -1,7 +1,7 @@
 package com.mfu.ProjectEnterprise.controller;
 
-import com.mfu.ProjectEnterprise.repository.*;
 import com.mfu.ProjectEnterprise.model.*;
+import com.mfu.ProjectEnterprise.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,8 +60,9 @@ public class EmployeeController {
 	  
 	  if(oldEmployeeData.isPresent()) {
 		  Employee updatedEmployeeData = oldEmployeeData.get();
-		  updatedEmployeeData.setName(newEmployeeData.getName());
-		
+		  
+		  updatedEmployeeData.setSurename(newEmployeeData.getSurename());
+		  
 		  
 		  Employee usrObj = employeeRepo.save(updatedEmployeeData);
 		  return new ResponseEntity<>(usrObj, HttpStatus.OK);

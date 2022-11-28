@@ -15,17 +15,25 @@ public class Employee {
     @Column(name="EMPLOYEE_ID")
 	private Long id;
 
-	@Column(name="NAME")
-	private String name;
+	@Column(name="SURENAME")
+	private String surename;
 
-    public Employee(String name) {
-        this.name = name;
-    }
 
-    public Employee(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+	// @JsonIgnore
+	// @OneToMany(mappedBy = "user")
+	// private Set<User> booking;
+
+	public Employee() {}
+
+	public Employee(Long id, String surename) {
+		this.id = id;
+		this.surename = surename;
+		
+	}
+
+	public Employee(String surename) {
+		this(null, surename);
+	}
 
     public Long getId() {
         return id;
@@ -35,12 +43,15 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getSurename() {
+        return surename;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSurename(String surename) {
+        this.surename = surename;
     }
 
+	
+
+	
 }
