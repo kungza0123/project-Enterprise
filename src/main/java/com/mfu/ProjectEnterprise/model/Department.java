@@ -1,39 +1,57 @@
-// package com.mfu.ProjectEnterprise.model;
-// import javax.persistence.*;
-// @Entity
-// @Table(name = "DEPARTMENTS")
-// public class Department {
-//     @Id
-// 	@GeneratedValue(strategy=GenerationType.AUTO)
-//     @Column(name="USER_ID")
-// 	private Long id;
+package com.mfu.ProjectEnterprise.model;
 
-// 	@Column(name="NAMEDEPARTMENT")
-// 	private String namedepartment;
+// import java.util.Set;
 
-//     public Department(String namedepartment) {
-//         this.namedepartment = namedepartment;
-//     }
+import javax.persistence.*;
 
-//     public Department(Long id, String namedepartment) {
-//         this.id = id;
-//         this.namedepartment = namedepartment;
-//     }
+// import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//     public Long getId() {
-//         return id;
-//     }
+@Entity
+@Table(name = "DEPARTMENTS")
+public class Department {
 
-//     public void setId(Long id) {
-//         this.id = id;
-//     }
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="DEPARTMENTS_ID")
+	private Long id;
 
-//     public String getNamedepartment() {
-//         return namedepartment;
-//     }
+	@Column(name="NAMEDEPARTMENT")
+	private String namedepartment;
 
-//     public void setNamedepartment(String namedepartment) {
-//         this.namedepartment = namedepartment;
-//     }
 
-// }
+	// @JsonIgnore
+	// @OneToMany(mappedBy = "user")
+	// private Set<User> booking;
+
+	public Department() {}
+
+	public Department(Long id, String namedepartment) {
+		this.id = id;
+		this.namedepartment = namedepartment;
+		
+	}
+
+	public Department(String namedepartment) {
+		this(null, namedepartment);
+	}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNamedepartment() {
+        return namedepartment;
+    }
+
+    public void setNamedepartment(String namedepartment) {
+        this.namedepartment = namedepartment;
+    }
+
+	
+
+	
+}

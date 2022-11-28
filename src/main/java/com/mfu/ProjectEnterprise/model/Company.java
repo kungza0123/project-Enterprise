@@ -1,38 +1,66 @@
-// package com.mfu.ProjectEnterprise.model;
-// import javax.persistence.*;
-// @Entity
-// @Table(name = "COMPANYS")
-// public class Company {
-//     @Id
-// 	@GeneratedValue(strategy=GenerationType.AUTO)
-//     @Column(name="USER_ID")
-// 	private Long id;
+package com.mfu.ProjectEnterprise.model;
 
-// 	@Column(name="NAMECOMPANY")
-//     private String namecompany;
+// import java.util.Set;
 
-//     public Company(String namecompany) {
-//         this.namecompany = namecompany;
-//     }
+import javax.persistence.*;
 
-//     public Company(Long id, String namecompany) {
-//         this.id = id;
-//         this.namecompany = namecompany;
-//     }
+// import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//     public Long getId() {
-//         return id;
-//     }
+@Entity
+@Table(name = "COMPANYS")
+public class Company{
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="COMPANYS_ID")
+	private Long id;
 
-//     public void setId(Long id) {
-//         this.id = id;
-//     }
+	@Column(name="NAMECOMPANY")
+	private String namecompany;
+    @Column(name="EMAIL")
+	private String email;
 
-//     public String getNamecompany() {
-//         return namecompany;
-//     }
+	// @JsonIgnore
+	// @OneToMany(mappedBy = "user")
+	// private Set<User> booking;
 
-//     public void setNamecompany(String namecompany) {
-//         this.namecompany = namecompany;
-//     }
-// }
+	public Company() {}
+
+	public Company(Long id, String namecompany,String email) {
+		this.id = id;
+		this.namecompany = namecompany;
+        this.email = email;
+		
+	}
+
+	public Company(String namecompany,String email) {
+		this(null, namecompany,email);
+	}
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNamecompany() {
+        return namecompany;
+    }
+
+    public void setNamecompany(String namedepartment) {
+        this.namecompany = namedepartment;
+    }
+
+	
+
+	
+}
