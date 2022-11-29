@@ -1,8 +1,10 @@
 package com.mfu.ProjectEnterprise.model;
 
-// import java.util.Set;
+import java.util.Set;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 // import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,9 +21,18 @@ public class Employee {
 	private String surename;
 
 
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "user")
-	// private Set<User> booking;
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	@ManyToOne
+    @JoinColumn(name = "DEPARTMENTS_ID")
+    private Department department;
+
 
 	public Employee() {}
 

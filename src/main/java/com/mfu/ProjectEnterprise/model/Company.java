@@ -1,10 +1,10 @@
 package com.mfu.ProjectEnterprise.model;
 
-// import java.util.Set;
+import java.util.Set;
 
 import javax.persistence.*;
 
-// import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "COMPANYS")
@@ -19,11 +19,19 @@ public class Company{
     @Column(name="EMAIL")
 	private String email;
 
-	// @JsonIgnore
-	// @OneToMany(mappedBy = "user")
-	// private Set<User> booking;
+	@JsonIgnore
+	@OneToMany(mappedBy = "company")
+	private Set<Department> departments;
 
-	public Company() {}
+	public Set<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Set<Department> departments) {
+        this.departments = departments;
+    }
+
+    public Company() {}
 
 	public Company(Long id, String namecompany,String email) {
 		this.id = id;

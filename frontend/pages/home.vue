@@ -84,7 +84,7 @@
     <v-dialog v-model="edit" max-width="500px">
         <v-card>
             <v-card-title>
-                <span class="text-h5">edititem</span>
+                <span class="text-h5">Edit item</span>
             </v-card-title>
 
             <v-card-text>
@@ -134,14 +134,14 @@
         </v-card>
 
     </v-dialog>
-    <v-simple-table v-for="(o,indexss) in co" :key="indexss">
+    <v-simple-table>
         <template v-slot:top>
             <v-toolbar flat color="#00796B">
                 <v-toolbar-title class="white--text">Employee List</v-toolbar-title>
                 <v-divider class="mx-4" inset vertical></v-divider>
                 <v-text-field background-color="white" prepend-inner-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
                 <v-spacer></v-spacer>
-                <v-dialog v-model="dialog" max-width="500px">
+                <v-dialog v-model="newuser" max-width="500px">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn color="#64B5F6" dark class="mb-2" v-bind="attrs" v-on="on">
                             New User
@@ -220,22 +220,23 @@
                 </th>
             </tr>
         </thead>
-        <tbody v-for="(n,index) in info" :key="index">
-            <tr v-for="(m,indexs) in de" :key="indexs">
+        <!-- <tbody v-for="(n,index) in info" :key="index"> -->
+        <tbody v-for="(m,indexs) in info" :key="indexs" :items="info">
+            <tr>
                 <td>
-                    {{ n.id}}
+                    {{ m.id}}
                 </td>
                 <td>
-                    {{n.surename}}
+                    {{m.surename}}
                 </td>
                 <td>
-                    {{ m.namedepartment}}
+                    {{ m.department.namedepartment}}
                 </td>
                 <td>
-                    {{o.namecompany}}
+                    {{m.department.company.namecompany}}
                 </td>
                 <td>
-                    {{ o.email}}
+                    {{ m.department.company.email}}
                 </td>
                 <td>
                     <v-icon small color="#2196F3" class="mr-2" @click="editItem()">
@@ -247,7 +248,12 @@
                 </td>
             </tr>
         </tbody>
-    </v-simple-table>
+        <template v-slot:no-data>
+            <v-btn color="primary" @click="initialize">
+                Reset
+            </v-btn>
+        </template>
+    </v-simple-table><br>
     <div class="logout">
         <center>
             <v-btn color="error" dark large @click="logout">
@@ -265,12 +271,13 @@ import Axios from "axios";
 export default {
     data: () => ({
         info: [],
-        de:[],
-        co:[],
+        de: [],
+        co: [],
         search: '',
         dialog: false,
         edit: false,
-        del:false,
+        del: false,
+        newuser:false,
         dialogDelete: false,
         headers: [{
                 text: 'ID',
@@ -339,15 +346,12 @@ export default {
         Axios.get('/api/getAllEmployees').then((res) => {
             this.info = res.data
             console.log(this.info);
-        }),
-        Axios.get('/api/getAllDepartments').then((res) => {
-            this.de = res.data
-            console.log(this.de);
-        }),
-        Axios.get('/api/getAllCompanys').then((res) => {
-            this.co = res.data
-            console.log(this.co);
+            console.log(res.data[0].id);
+            console.log(res.data[0].surename);
+            console.log(res.data[0].departmant.namedepartment);
+
         })
+     
     },
 
     methods: {
@@ -373,20 +377,20 @@ export default {
         editItem() {
             // alert("editssssss");
             this.edit = true,
-            Axios.put('/api/getAllEmployees').then((res) => {
-                this.info = res.data
-                console.log(this.info);
-            })
-          
+                Axios.put('/api/getAllEmployees').then((res) => {
+                    this.info = res.data
+                    console.log(this.info);
+                })
+
         },
 
         deleteItem() {
             // alert("editssssss");
-            this.del = true,
-            Axios.delete('/api/deleteEmployeeById/'+id).then((res) => {
-                this.info = res.data
-                console.log(this.info);
-            })
+            this.del = true
+            //     Axios.delete('/api/deleteEmployeeById/{}' + id).then((res) => {
+            //         this.info = res.data
+            //         console.log(this.info);
+            //     })
         },
 
         deleteItemConfirm() {
@@ -396,6 +400,7 @@ export default {
 
         close() {
             this.edit = false
+            this.newuser = false
 
         },
 
