@@ -19,7 +19,8 @@ public class Employee {
 
 	@Column(name="SURENAME")
 	private String surename;
-
+	@Column(name="EMAIL")
+	private String email;
 
 	public Department getDepartment() {
 		return department;
@@ -36,14 +37,15 @@ public class Employee {
 
 	public Employee() {}
 
-	public Employee(Long id, String surename) {
+	public Employee(Long id, String surename,String email) {
 		this.id = id;
 		this.surename = surename;
+		this.email = email;
 		
 	}
 
-	public Employee(String surename) {
-		this(null, surename);
+	public Employee(String surename,String email) {
+		this(null, surename,email);
 	}
 
     public Long getId() {
@@ -61,6 +63,14 @@ public class Employee {
     public void setSurename(String surename) {
         this.surename = surename;
     }
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	
 

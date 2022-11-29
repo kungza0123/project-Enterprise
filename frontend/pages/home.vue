@@ -34,6 +34,7 @@
                     Save
                 </v-btn>
             </v-card-actions>
+            
         </v-card>
     </v-dialog>
 
@@ -42,7 +43,9 @@
             <v-toolbar flat color="#00796B">
                 <v-toolbar-title class="white--text">Employee List</v-toolbar-title>
                 <v-divider class="mx-4" inset vertical></v-divider>
-                <v-text-field background-color="white" prepend-inner-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
+                <v-text-field background-color="white" prepend-inner-icon="mdi-magnify" label="Search" single-line hide-details>
+            
+                </v-text-field>
                 <v-spacer></v-spacer>
 
                 <v-dialog v-model="newuser" max-width="500px">
@@ -68,9 +71,12 @@
                                     <!-- <v-col cols="12" sm="6" md="4">
                                         <v-combobox v-model="editedItem.Department" v-for="(d,inx) in this.items" :key="inx" :items="items" label="Department"></v-combobox>
                                     </v-col> -->
-                                    <!-- <v-col cols="12" sm="6" md="4">
+                                    <v-col cols="12" sm="6" md="4">
+                                        <v-text-field v-model="editedItem.Company" label="Commmpany"></v-text-field>
+                                    </v-col>
+                                    <v-col cols="12" sm="6" md="4">
                                         <v-text-field v-model="editedItem.Email" label="Email"></v-text-field>
-                                    </v-col> -->
+                                    </v-col>
                                 </v-row>
                             </v-container>
                         </v-card-text>
@@ -138,7 +144,7 @@
                     {{m.department.company.namecompany}}
                 </td>
                 <td>
-                    {{ m.department.company.email}}
+                    {{ m.email}}
                 </td>
                 <td>
                     <v-icon small color="#2196F3" class="mr-2" @click="editItem()">
@@ -286,7 +292,8 @@ export default {
                 surename: this.editedItem.Name,
                 department: {
                     id: this.editedItem.Department,
-                }
+                },
+                email : this.editedItem.Email
             }).then((res) => {
                 Axios.get('/api/getAllEmployees').then((res) => {
                     this.info = res.data

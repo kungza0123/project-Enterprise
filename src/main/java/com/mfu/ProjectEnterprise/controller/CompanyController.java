@@ -61,7 +61,7 @@ public class CompanyController {
 	  if(oldCompanyData.isPresent()) {
 		  Company updatedCompanyData = oldCompanyData.get();
 		  updatedCompanyData.setNamecompany(newCompanyData.getNamecompany());
-          updatedCompanyData.setEmail(newCompanyData.getEmail());
+        //   updatedCompanyData.setEmail(newCompanyData.getEmail());
 		  
 		  Company usrObj = companyRepo.save(updatedCompanyData);
 		  return new ResponseEntity<>(usrObj, HttpStatus.OK);

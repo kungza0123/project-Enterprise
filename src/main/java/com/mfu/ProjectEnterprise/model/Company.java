@@ -16,8 +16,8 @@ public class Company{
 
 	@Column(name="NAMECOMPANY")
 	private String namecompany;
-    @Column(name="EMAIL")
-	private String email;
+    // @Column(name="EMAIL")
+	// private String email;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "company")
@@ -33,28 +33,28 @@ public class Company{
 
     public Company() {}
 
-	public Company(Long id, String namecompany,String email) {
+	public Company(Long id, String namecompany) {
 		this.id = id;
 		this.namecompany = namecompany;
-        this.email = email;
+        // this.email = email;
 		
 	}
 
-	public Company(String namecompany,String email) {
-		this(null, namecompany,email);
+	public Company(String namecompany) {
+		this(null, namecompany);
 	}
 
     public Long getId() {
         return id;
     }
 
-    public String getEmail() {
-        return email;
-    }
+    // public String getEmail() {
+    //     return email;
+    // }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // public void setEmail(String email) {
+    //     this.email = email;
+    // }
 
     public void setId(Long id) {
         this.id = id;

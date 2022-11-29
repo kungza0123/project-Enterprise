@@ -62,7 +62,7 @@ public class EmployeeController {
 		  Employee updatedEmployeeData = oldEmployeeData.get();
 		  
 		  updatedEmployeeData.setSurename(newEmployeeData.getSurename());
-		  
+		  updatedEmployeeData.setEmail(newEmployeeData.getEmail());
 		  
 		  Employee usrObj = employeeRepo.save(updatedEmployeeData);
 		  return new ResponseEntity<>(usrObj, HttpStatus.OK);
