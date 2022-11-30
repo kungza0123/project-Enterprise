@@ -170,7 +170,7 @@
     </v-simple-table><br>
     <div class="logout">
         <center>
-            <v-btn color="error" dark large @click="logout">
+            <v-btn color="#D50000" dark large @click="logout">
                 Logout
             </v-btn>
         </center>
