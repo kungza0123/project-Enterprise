@@ -19,10 +19,6 @@
 
             <div class="col-lg-12">
                 <v-btn color="success" class="mr-4" v-on:click="Ok()"> login </v-btn>
-
-                <!-- <v-btn color="error" class="col-lg-1.5" @click="Report()" to="/report">
-                      Report
-                  </v-btn> -->
             </div>
         </center>
     </v-container>
@@ -47,32 +43,7 @@ export default {
 
     methods: {
         Ok() {
-            // if (this.form.username != "" && this.form.password != "") {
-            //   Axios.get("/api/getAllUsers", {
-            //             params: {
-            //                 user: this.form.username,
-            //                 pass: this.form.password,
-            //             },
-            //         })
-            //         .then((data) => {
-            //             if (data.data.response.length == 0) {
-            //                 alert("Username or password wrong ")
-            //             } else {
-
-            //                 var user = JSON.stringify(data.data.response);
-            //                 console.log(user)
-            //                 window.sessionStorage.setItem("user", user);
-            //                 this.$router.push({
-            //                     path: "/home",
-            //                 });
-            //             }
-            //         })
-            //         .catch((error) => {
-            //             alert(error);
-            //         });
-            // } else {
-            //     alert("Please fill out the information correctly.");
-            // }
+            
             Axios.get("/api/getAllUsers").then((res) => {
                 var user = res.data
                 console.log("user", user);
