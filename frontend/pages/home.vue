@@ -12,7 +12,7 @@
 
                 <v-dialog v-model="newuser" max-width="500px">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn color="#64B5F6" dark class="mb-2" v-bind="attrs" v-on="on">
+                        <v-btn color="#1976D2" dark class="mb-2" v-bind="attrs" v-on="on">
                             New User
                         </v-btn>
                     </template>
@@ -170,7 +170,7 @@
     </v-simple-table><br>
     <div class="logout">
         <center>
-            <v-btn color="error" dark large @click="logout">
+            <v-btn color="#D50000" dark large @click="logout">
                 Logout
             </v-btn>
         </center>
